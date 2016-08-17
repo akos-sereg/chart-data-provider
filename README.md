@@ -10,6 +10,12 @@ This tool might be useful for you if you are working with charts, and the input 
 - your data is not continuous
 - there might be duplicate entries for the same date in your data
 
+# Install
+
+```
+npm install chart-data-provider --save
+```
+
 # Usage
 
 Using sample data ...
@@ -47,17 +53,17 @@ var data = chartDataProvider
 
 ```
 
-The result would be an array with continous dates between the defined date range
+The result would be an array with continuous dates between the defined date range
 
 ```javascript
-// data
+// content of 'data' array
 [
   { x: '2016-08-01', y: 1 },
-  { x: '2016-08-02', y: -6 }, // aggregated
-  { x: '2016-08-03', y: 0 },  // filling gaps
+  { x: '2016-08-02', y: -6 }, // duplicate entries got aggregated
+  { x: '2016-08-03', y: 0 },  // filling the gaps
   { x: '2016-08-04', y: 0 },
   { x: '2016-08-05', y: -10 },
-  { x: '2016-08-06', y: 0 },  // filling gaps (to the end of date range)
+  { x: '2016-08-06', y: 0 },  // filling the gaps (to the end of defined date range)
 ]
 
 ```
