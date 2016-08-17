@@ -1,4 +1,5 @@
 # chart-data-provider
+[![Build Status](https://travis-ci.org/akos-sereg/chart-data-provider.png)](https://travis-ci.org/akos-sereg/chart-data-provider) 
 
 Prepares chart-friendly data from user data
 
