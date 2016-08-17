@@ -83,11 +83,11 @@ describe("Range", function() {
       });
 
     expect(data.length).toBe(20);
-    expect(data[0].x).toBe(1470002400);
-    expect(data[1].x).toBe(1470088800);
-    expect(data[2].x).toBe(1470175200);
-    expect(data[3].x).toBe(1470261600);
-    expect(data[19].x).toBe(1471644000);
+    expect(data[0].x).toBe(1470009600);
+    expect(data[1].x).toBe(1470096000);
+    expect(data[2].x).toBe(1470182400);
+    expect(data[3].x).toBe(1470268800);
+    expect(data[19].x).toBe(1471651200);
 
   });
 
@@ -112,11 +112,11 @@ describe("Range", function() {
       });
 
     expect(data.length).toBe(20);
-    expect(data[0].x).toBe(1470002400000);
-    expect(data[1].x).toBe(1470088800000);
-    expect(data[2].x).toBe(1470175200000);
-    expect(data[3].x).toBe(1470261600000);
-    expect(data[19].x).toBe(1471644000000);
+    expect(data[0].x).toBe(1470009600000);
+    expect(data[1].x).toBe(1470096000000);
+    expect(data[2].x).toBe(1470182400000);
+    expect(data[3].x).toBe(1470268800000);
+    expect(data[19].x).toBe(1471651200000);
 
   });
 
