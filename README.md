@@ -4,9 +4,9 @@ Prepares chart-friendly data from user data
 
 # Usage
 
-```javascript
-var chartDataProvider = require('chart-data-provider');
+Using sample data ...
 
+```javascript
 var sampleData = [
   { commit_date: '2016-08-01', lines_added: 1 },
   { commit_date: '2016-08-02', lines_added: -2 },
@@ -19,7 +19,12 @@ var sampleData = [
   //{ commit_date: '2016-08-09', lines_added: 9 },
   { commit_date: '2016-08-10', lines_added: -10 },
 ];
+```
 
+... by calling chart data provider
+
+```javascript
+var chartDataProvider = require('chart-data-provider');
 var data = chartDataProvider
   .range('2016-08-01', '2016-08-20')
   .axis({ 
@@ -47,11 +52,11 @@ The result would be an array with continous dates between the defined date range
 	{ x: '2016-08-01', y: 1 },
 	{ x: '2016-08-02', y: -2 },
 	{ x: '2016-08-03', y: 3 },
-	{ x: '2016-08-04', y: -6 },
+	{ x: '2016-08-04', y: -6 }, // <-- aggregated from user data
 	{ x: '2016-08-05', y: 5 },
 	{ x: '2016-08-06', y: -3 },
 	{ x: '2016-08-07', y: 7 },
-	{ x: '2016-08-08', y: 0 },
+	{ x: '2016-08-08', y: 0 }, // <-- filling gaps
 	{ x: '2016-08-09', y: 0 },
 	{ x: '2016-08-10', y: -10 },
 ]
