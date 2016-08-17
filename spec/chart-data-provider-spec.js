@@ -88,7 +88,6 @@ describe("Range", function() {
     expect(data[2].x).toBe(1470182400);
     expect(data[3].x).toBe(1470268800);
     expect(data[19].x).toBe(1471651200);
-
   });
 
   it('should fit in EPOCH_IN_MS mode', function() {
