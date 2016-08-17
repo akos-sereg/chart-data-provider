@@ -1,7 +1,14 @@
 # chart-data-provider
+[![npm](https://img.shields.io/npm/v/chart-data-provider.svg?style=flat)](https://npmjs.com/package/chart-data-provider)
 [![Build Status](https://travis-ci.org/akos-sereg/chart-data-provider.png)](https://travis-ci.org/akos-sereg/chart-data-provider) 
 
 Prepares chart-friendly data from user data
+
+# Why?
+
+This tool might be useful for you if you are working with charts, and the input of the chart engine should be an array with continuous dates in it, but ...
+- your data is not continuous
+- there might be duplicate entries for the same date in your data
 
 # Usage
 
