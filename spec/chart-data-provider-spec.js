@@ -88,7 +88,7 @@ describe("Range", function() {
     expect(data[2].x).toBe(1470182400);
     expect(data[3].x).toBe(1470268800);
     expect(data[19].x).toBe(1471651200);
-    
+
   });
 
   it('should fit in EPOCH_IN_MS mode', function() {
@@ -125,7 +125,7 @@ describe("Range", function() {
     var chartDataProvider = require('../index');
 
     var data = chartDataProvider
-      .range(new Date(2016, 7, 1), new Date(2016, 7, 20))
+      .range(new Date(Date.UTC(2016, 7, 1)), new Date(Date.UTC(2016, 7, 20)))
       .axis({ 
           x: { 
               input: { fieldName: 'commit_date' },

@@ -45,8 +45,8 @@ The result would be an array with continous dates between the defined date range
 ```javascript
 // data
 [
-	{ x: '2016-08-01', y: 1 },
-	{ x: '2016-08-02', y: -6 }, // aggregated
+  { x: '2016-08-01', y: 1 },
+  { x: '2016-08-02', y: -6 }, // aggregated
   { x: '2016-08-03', y: 0 },  // filling gaps
   { x: '2016-08-04', y: 0 },
   { x: '2016-08-05', y: -10 },
