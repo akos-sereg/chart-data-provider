@@ -45,11 +45,7 @@ var data = chartDataProvider
           output: { fieldName: 'y', calculation: chartDataProvider.SUM_ON_CURRENT_DATE } // The way we aggregate
       } 
   })
-  .data(sample, { 
-      itemRenderer: function(recordsOnDate, chartItem) { 
-      	// here you can define extra properties for each array element before getting the result
-  	  }
-  });
+  .data(sample);
 
 ```
 
@@ -67,3 +63,9 @@ The result would be an array with continuous dates between the defined date rang
 ]
 
 ```
+# Configuration
+
+| Axis Parameter  | Value |
+| ------------- | ------------- |
+| x.output.type  | EPOCH<br/>EPOCH_IN_MS<br/>YYYY-MM-DD  |
+| y.output.calculation  | SUM_ON_CURRENT_DATE: value will be the sum of current date's values<br/>SUM_UP_TO_CURRENT_DATE: value will be the sum of all previous entries, plus the sum of current date's values <br/>ENTRY_COUNT_ON_CURRENT_DATE: only the number of entries will be considered<br/>  |

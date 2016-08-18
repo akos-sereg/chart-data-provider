@@ -406,5 +406,164 @@ describe("Calculation", function() {
     expect(data[19].y).toBe(0);
 
   });
+
+it('ENTRY_COUNT_ON_CURRENT_DATE, considering multiple items on same date', function() {
+
+    var chartDataProvider = require('../index');
+
+    var sampleData = [
+      { commit_date: '2016-08-01', lines_added: 1 },
+      { commit_date: '2016-08-02', lines_added: -2 },
+      { commit_date: '2016-08-03', lines_added: 3 },
+      { commit_date: '2016-08-04', lines_added: -4 }, { commit_date: '2016-08-04', lines_added: -2 },
+      { commit_date: '2016-08-05', lines_added: 5 },
+      { commit_date: '2016-08-06', lines_added: -6 }, { commit_date: '2016-08-06', lines_added: 2 }, { commit_date: '2016-08-06', lines_added: 1 },
+      { commit_date: '2016-08-07', lines_added: 7 },
+      { commit_date: '2016-08-08', lines_added: -8 },
+      { commit_date: '2016-08-09', lines_added: 9 },
+      { commit_date: '2016-08-10', lines_added: -10 },
+    ];
+
+    var data = chartDataProvider
+      .range('2016-08-01', '2016-08-20')
+      .axis({ 
+          x: { 
+              input: { fieldName: 'commit_date' },
+              output: { fieldName: 'x', type: 'YYYY-MM-DD'}
+          }, 
+          y: { 
+              input: { fieldName: 'lines_added' },
+              output: { fieldName: 'y', calculation: chartDataProvider.ENTRY_COUNT_ON_CURRENT_DATE }
+          } 
+      })
+      .data(sampleData, { 
+          itemRenderer: function(recordsOnDate, chartItem) { }
+      });
+
+    expect(data.length).toBe(20);
+    expect(data[0].y).toBe(1);
+    expect(data[1].y).toBe(1);
+    expect(data[2].y).toBe(1);
+    expect(data[3].y).toBe(2);
+    expect(data[4].y).toBe(1);
+    expect(data[5].y).toBe(3);
+    expect(data[6].y).toBe(1);
+    expect(data[7].y).toBe(1);
+    expect(data[8].y).toBe(1);
+    expect(data[9].y).toBe(1);
+    expect(data[10].y).toBe(0);
+    expect(data[19].y).toBe(0);
+
+  });
+
+});
+
+
+// ---------------------------------------------------------------
+// Checking .data function
+// ---------------------------------------------------------------
+describe(".data function", function() {
+ 
+  it('configuration is not required', function() {
+
+    var chartDataProvider = require('../index');
+
+    var sampleData = [
+      { commit_date: '2016-08-10', lines_added: -10 },
+    ];
+
+    var data = chartDataProvider
+      .range('2016-08-01', '2016-08-20')
+      .axis({ 
+          x: { 
+              input: { fieldName: 'commit_date' },
+              output: { fieldName: 'x', type: 'YYYY-MM-DD'}
+          }, 
+          y: { 
+              input: { fieldName: 'lines_added' },
+              output: { fieldName: 'y', calculation: chartDataProvider.SUM_UP_TO_CURRENT_DATE }
+          } 
+      })
+      .data(sampleData);
+
+      expect(data.length).toBe(20);
+  });
+
+  it('null configuration', function() {
+
+    var chartDataProvider = require('../index');
+
+    var sampleData = [
+      { commit_date: '2016-08-10', lines_added: -10 },
+    ];
+
+    var data = chartDataProvider
+      .range('2016-08-01', '2016-08-20')
+      .axis({ 
+          x: { 
+              input: { fieldName: 'commit_date' },
+              output: { fieldName: 'x', type: 'YYYY-MM-DD'}
+          }, 
+          y: { 
+              input: { fieldName: 'lines_added' },
+              output: { fieldName: 'y', calculation: chartDataProvider.SUM_UP_TO_CURRENT_DATE }
+          } 
+      })
+      .data(sampleData, null);
+
+      expect(data.length).toBe(20);
+  });
+
+  it('missing itemRenderer in configuration', function() {
+
+    var chartDataProvider = require('../index');
+
+    var sampleData = [
+      { commit_date: '2016-08-10', lines_added: -10 },
+    ];
+
+    var data = chartDataProvider
+      .range('2016-08-01', '2016-08-20')
+      .axis({ 
+          x: { 
+              input: { fieldName: 'commit_date' },
+              output: { fieldName: 'x', type: 'YYYY-MM-DD'}
+          }, 
+          y: { 
+              input: { fieldName: 'lines_added' },
+              output: { fieldName: 'y', calculation: chartDataProvider.SUM_UP_TO_CURRENT_DATE }
+          } 
+      })
+      .data(sampleData, { });
+
+      expect(data.length).toBe(20);
+  });
+
+  it('itemRenderer defined as string', function() {
+
+    var chartDataProvider = require('../index');
+
+    var sampleData = [
+      { commit_date: '2016-08-10', lines_added: -10 },
+    ];
+
+    var data = chartDataProvider
+      .range('2016-08-01', '2016-08-20')
+      .axis({ 
+          x: { 
+              input: { fieldName: 'commit_date' },
+              output: { fieldName: 'x', type: 'YYYY-MM-DD'}
+          }, 
+          y: { 
+              input: { fieldName: 'lines_added' },
+              output: { fieldName: 'y', calculation: chartDataProvider.SUM_UP_TO_CURRENT_DATE }
+          } 
+      })
+      .data(sampleData, { itemRenderer: 'hello world' });
+
+      expect(data.length).toBe(20);
+  });
+
+
 });
 
